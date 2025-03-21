@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Exercitii recomandate</title>
+    <style>
+        body {
+          font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        .navbar {
+          overflow: hidden;
+          background-image: linear-gradient(to right, rgb(74, 74, 74) , rgb(210, 210, 210),rgb(95, 92, 104));
+        }
+        
+        .navbar a {
+          float: left;
+          font-size: 16px;
+          height: auto;
+          color: rgb(255, 255, 255);
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+        
+        .dropdown {
+          float: left;
+          overflow: hidden;
+        }
+        
+        .dropdown .dropbtn {
+          font-size: 16px;  
+          border: none;
+          outline: none;
+          color: white;
+          padding: 14px 16px;
+          background-color: inherit;
+          font-family: inherit;
+          margin: 0;
+        }
+        
+        .navbar a:hover, .dropdown:hover .dropbtn {
+          background-color: red;
+        }
+        
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #f9f9f9;
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+        }
+        
+        .dropdown-content a {
+          float: none;
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+          text-align: left;
+        }
+        
+        .dropdown-content a:hover {
+          background-color: #ddd;
+        }
+        
+        .dropdown:hover .dropdown-content {
+          display: block;
+        }
+        </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="{{ url_for('notifications') }}">Notificari</a>
+        <div class="dropdown">
+          <button class="dropbtn">Exercitii 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="/adaugare_exercitii">Adaugare exercitii</a>
+            <a href="/reports">Exercitii adaugate</a>
+            <a href="{{ url_for('exercitii') }}">Obiective</a>
+            <a href="{{ url_for('tipuri_exercitii') }}">Exercitii recomandate</a>
+          </div>
+        </div>
+        <a href="{{ url_for('exercise_chart') }}">Grafice</a>
+      </div>
+    <div>
+        <h1 class="bara">Exercitii recomandate</h1>
+    </div>
+    <div class="cuprins">    
+    <h3>Cuprins:</h3>
+    <li>Genoflexiuni</li>
+    <li>Flotari</li>
+    <li>Fandari frontale</li>
+    <li>Plank</li>
+    <li>Burpees</li>
+    <li>Ramat (cu gantera)</li>
+    <li>Jumping jacks</li>
+    <li>Exemplu antrenament</li>
+</div>
+    <img src="{{ url_for('static', filename='images/poza2.jpg') }}" class="poza1">
+     <h1 class="header">1. Genoflexiuni</h1>
+     <p align="center" >Acestea sunt considerate (pe bună dreptate) un exercițiu de bază în orice antrenament care folosește greutatea corpului.
+        Genuflexiunea este o mișcare naturală a corpului, care implică mușchii coapselor (cei mai mari mușchi din corp) dar și 
+        mușchii abdomenului.
+     </p>
+    <div class="body" >
+        <h3>Detalii pentru o genuflexiune executată corect:</h3>
+        <li>picioarele sunt depărtate la nivelul umerilor</li>
+        <li>genunchii sunt în linie cu degetele de la picioare</li>
+        <li>abdomenul este încordat</li>
+        <li>spatele este drept menținând curbura lombară normală</li>
+        <li>călcâiele rămân lipite de podea pe toată durata exercițiului</li>  
+    </div>
+        <div class="video">
+            <video height="100%" width="90%" muted autoplay controls>
+                <source src="{{ url_for('static', filename='video/The Air Squat.mp4') }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    <h1 class="header">2. Flotari</h1>
+    <p align="center" >Acesta este un exercițiu de bază pentru mușchii pieptului. De asemenea, sunt implicați umerii, tricepsul și abdomenul.</p>
+    <div class="body" >
+        <h3>Detalii pentru o flotare executată corect:</h3>
+        <li>mâinile sunt depărtate la nivelul umerilor</li>
+        <li>abdomenul este încordat</li>
+        <li>picioarele sunt apropiate, sprijinite pe vărfuri</li>
+        <li>corpul este menținut drept, de la călcâie până la cap, într-o poziție rigidă</li> 
+    </div>
+    <div class="video">
+        <video height="100%" width="90%" muted autoplay controls>
+            <source src="{{ url_for('static', filename='video/The Push-Up.mp4') }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <h1 class="header">3. Fandari frontale</h1>
+    <p align="center" >Fandările frontale (alternative) implică mușchii coapselor, feselor și gambelor.
+        Acest exercițiu este de asemenea foarte bun pentru echilibru.</p>
+    <div class="body" >
+        <h3>Detalii pentru o fandare executată corect:</h3>
+        <li>spatele rămâne drept pe toată durata exercițiului</li>
+        <li>privirea este îndreptată înainte</li>
+        <li>pășește astfel încât coapsa și gamba piciorului din față să formeze un unghi de 90 de grade</li>
+        <li>călcâiul piciorului din față rămâne lipit de podea atunci când ridici corpul</li> 
+    </div>
+    <div class="video">
+        <video height="100%" width="90%" muted autoplay controls>
+            <source src="{{ url_for('static', filename='video/At-Home_ Assisted Lunge.mp4') }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <h1 class="header">4. Plank</h1>
+    <p align="center" >Acest exercițiu implică mușchii abdomenului, fiind o bună alternativă pentru cei care au probleme cu 
+        coloana vertebrală și nu pot executa exercițiile clasice pentru abdomen.</p>
+    <div class="body" >
+        <h3>Detalii pentru un plank executat corect:</h3>
+        <li>abdomenul este încordat</li>
+        <li>corpul este menținut drept, de la călcâie până la cap, într-o poziție rigidă</li>
+        <li>coatele sunt poziționate direct sub umeri</li>
+        <li>brațul și antebrațul formează un unghi de 90 de grade</li> 
+    </div>
+    <div class="video">
+        <video height="100%" width="90%" muted autoplay controls>
+            <source src="{{ url_for('static', filename='video/Plank Variations.mp4') }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <h1 class="header">5. Burpees</h1>
+    <p align="center" >Acesta este un exercițiu complex pentru coapse, zona inghinală și fese. De asemenea, 
+        sunt solicitați mușchii abdomenului și umerii.
+        Este considerat unul dintre cele mai bune exerciții pentru condiționare metabolică (crește numărul de calorii 
+        arse atât în timpul antrenamentului cât și după antrenament).</p>
+        <div class="video">
+            <video height="100%" width="90%" muted autoplay controls>
+                <source src="{{ url_for('static', filename='video/The Burpee.mp4') }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <h1 class="header">6. Ramat (cu gantera)</h1>
+        <p align="center" >La final am inclus și un exercițiu pentru care vei avea nevoie de o ganteră sau o altă greutate cu mâner
+             (ex. un bidon cu lichid).
+            Ramatul este un exercițiu foarte eficient pentru spate (zona superioară și zona lombară). De asemenea, sunt implicați 
+            mușchii abdomenului, bicepsul și umerii.
+            Foarte important: spatele trebuie să rămână drept pe toată durata exercițiului.</p>
+            <div class="video">
+                <video height="100%" width="90%" muted autoplay controls>
+                    <source src="{{ url_for('static', filename='video/ramat.mp4') }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        <h1 class="header">7. Jumping jacks</h1>
+            <p align="center" >Acesta este un exercițiu complex pentru coapse, gambe și fese. De asemenea, 
+                sunt solicitați mușchii abdomenului și umerii.
+                Poate fi folosit atât în etapa de încălzire cât și ca exercițiu în cadrul unui circuit.</p>
+                <div class="video">
+                    <video height="100%" width="90%" muted autoplay controls>
+                        <source src="{{ url_for('static', filename='video/Jumping Jacks.mp4') }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>       
+        <h1 class="header">Exemplu antrenament</h1>
+        <p align="center" >Înainte de orice antrenament este recomandată încălzirea mușchilor și articulațiilor. 
+            Acest lucru te va ajuta să eviți accidentările.
+            Timpul minim recomandat pentru încălzire: 5 minute.
+            Nu ai nevoie de echipament special. Un set de exerciții simple sunt suficiente pentru o 
+            încălzire corectă:</p>  
+            <div class="video">
+                    <video height="100%" width="90%" muted autoplay controls>
+                        <source src="{{ url_for('static', filename='video/Exercitii Incalzire Articulara.mp4') }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+        <p align="center" >În funcțe de condiția ta fizică actuală, pentru antrenamentul propriu-zis, poți alege un circuit format 
+            din mai multe exerciții.</p> 
+        <div class="body" >
+            <h3>Exemplu de circuit pentru începători:</h3>
+            <li>Genuflexiuni: 20 repetări</li>
+            <li>Flotări: 10 repetări</li>
+            <li>Fandări alternative: 20 repetări (10 pe fiecare picior)</li>
+            <li>Sărituri Jacks: 30 repetări</li> 
+            <li>Poziție de placă: 15-20 secunde</li>
+            <p>Încearcă să repeți acest circuit de 3 ori, cu pauză minimă între seturi.</p>
+        </div> 
+        <div class="video">
+            <video height="100%" width="90%" muted autoplay controls>
+                <source src="{{ url_for('static', filename='video/At-Home Workout_ Rows, Push-Ups and Squats.mp4') }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+               <p class="bara">
+                <marquee><a href="https://educatiepentrusanatate.ro/7-exercitii-fizice-pentru-acasa/#tab-con-9" target="_blank">Site-ul utilizat pentru informatii</a></marquee></p>
+</body>
+</html>

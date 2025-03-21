@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Notifications</title>
+    <style>
+        body {
+          font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        .navbar {
+          overflow: hidden;
+          background-image: linear-gradient(to right, rgb(74, 74, 74) , rgb(210, 210, 210),rgb(95, 92, 104));
+        }
+        
+        .navbar a {
+          float: left;
+          font-size: 16px;
+          height: auto;
+          color: rgb(255, 255, 255);
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+        
+        .dropdown {
+          float: left;
+          overflow: hidden;
+        }
+        
+        .dropdown .dropbtn {
+          font-size: 16px;  
+          border: none;
+          outline: none;
+          color: white;
+          padding: 14px 16px;
+          background-color: inherit;
+          font-family: inherit;
+          margin: 0;
+        }
+        
+        .navbar a:hover, .dropdown:hover .dropbtn {
+          background-color: red;
+        }
+        
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #f9f9f9;
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+        }
+        
+        .dropdown-content a {
+          float: none;
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+          text-align: left;
+        }
+        
+        .dropdown-content a:hover {
+          background-color: #ddd;
+        }
+        
+        .dropdown:hover .dropdown-content {
+          display: block;
+        }
+        </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="{{ url_for('notifications') }}">Notificari</a>
+        <div class="dropdown">
+          <button class="dropbtn">Exercitii 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="/adaugare_exercitii">Adaugare exercitii</a>
+            <a href="/reports">Exercitii adaugate</a>
+            <a href="{{ url_for('exercitii') }}">Obiective</a>
+            <a href="{{ url_for('tipuri_exercitii') }}">Exercitii recomandate</a>
+          </div>
+        </div>
+        <a href="{{ url_for('exercise_chart') }}">Grafice</a>
+      </div>
+    <h1>Notifications</h1>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+
+
+{% if exercises_today_2 < daily_goal and exercises_today != 0 %}
+<li>Obiectivul nu a fost inca atins! Este timpul sa fi activ!</li>
+<div class="video2">
+<video height="100%" width="90%" muted autoplay loop controls>
+    <source src="{{ url_for('static', filename='video/Disappearing emoji meme.mp4') }}" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+</div>
+{% endif %}
+
+{% if exercises_today_2 >= daily_goal and exercises_today != 0 %}
+<li>Felicitari! Astazi ai fost o persoana foarte activa si ti-ai indeplinit obiectivul! Tine-o tot asa!</li>
+<img src="{{ url_for('static', filename='images/image0.jpg') }}" class="poza2">
+{% endif %}
+
+{% if exercises_today == 0 %}
+<li>Observ ca nu ai adaugat niciun exercitiu astazi.Este timpul sa treci la treaba!</li>
+<img src="{{ url_for('static', filename='images/image1.jpg') }}" class="poza2">
+{% endif %}
+    <p>Verifica-ti progresul <a href="{{ url_for('reports') }}">aici</a> si seteaza-ti noi obiective <a href="{{ url_for('exercitii') }}">aici</a>.</p>
+</body>
+</html>
